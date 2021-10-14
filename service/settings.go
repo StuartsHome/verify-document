@@ -10,7 +10,9 @@ type HttpSettings struct {
 	ListenAddress *string
 }
 
+const Address = ":8082"
+
 func SettingsInit() {
-	nums := ":8082"
+	nums := Address
 	listenAddress = &nums
 }
