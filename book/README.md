@@ -4,8 +4,16 @@
 3. export PATH=:$PATH:$(go env GOPATH)/bin"
 4. protoc --help | less 
     To verify it works
-5. protoc --go_out=. --go_opt=paths=source_relative book/book.proto
-6. ...
-7. write output to file and then:
-8. hexdump -C book.protobuf
-9. hexdump -C book.json
+5. Generate client
+    protoc --go_out=. --go_opt=paths=source_relative book/book.proto
+6. Generate server
+    protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative book/book.proto
+7. ...
+8. write output to file and then:
+9. hexdump -C book.protobuf
+10. hexdump -C book.json
+
+
+
+# Notes
+The protoc-gen-go and protoc-gen-go-grpc are two different protoc plugins. While the former generates Go code for protobuf message definitions, the latter generates Go code for service definitions.

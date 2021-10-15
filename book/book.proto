@@ -2,6 +2,18 @@ syntax = "proto3";
 
 option go_package = "github.com/stuartshome/verify-document/book";
 
+service BookStreamService {
+    rpc FetchResponse (Request) returns (stream Response) {}
+}
+
+message Request {
+    int32 Id = 1;
+}
+
+message Response  {
+    string Result = 1;
+}
+
 message Book {
     int32 Id = 1;
     string Title = 2;
